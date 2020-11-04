@@ -7,7 +7,49 @@
 </head>
 <body>
         <div>
-            <button type="submit">MOSTRAR</button>
+            <button id="mostrar" type="submit">MOSTRAR</button>
+        </div>
+        <div>
+            <table id="resultado" style="width: 100%;text-align: center">
+                <thead style="text-align: center;">
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>COLOR</th>
+                    <th>SIZE</th>
+                    <th>IMAGE</th>
+
+                </thead>
+            </table>
+        </div>
+        <div id='mensaje'>
+        
         </div>
 </body>
+<script>
+    
+    document.getElementById('mostrar').onclick = Mostrar;
+    let resultado = document.getElementById('resultado');
+    let dire = "http://localhost:9090/Ropas";
+    function Mostrar(){
+       fetch(dire)
+       .then(response => response.json())
+       .then(data => {
+            data.forEach(item => {
+                resultado.innerHTML += `
+                <td>${item.id}</td>
+                <td>${item.name}</td>
+                <td>${item.color}</td>
+                <td>${item.size}</td>
+                <td><a href='${item.image}' target='_blank'</a>${item.image}</td>
+            
+                `
+            });
+       });
+
+       document.getElementById('mensaje').innerHTML +=`<br> <br> <br> <h1 style="font-size:30px;font-family: 'Montserrat', sans-serif; color:green;">No hay mas resultados par cargar, gracias :)</h1>`;
+       document.getElementById('mostrar').disabled = true;
+        
+    }
+</script>
+
 </html>
