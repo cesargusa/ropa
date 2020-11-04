@@ -1,0 +1,33 @@
+package com.example.Ropa.API;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import com.example.Ropa.Model.Ropa;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class RopaController {
+    
+    
+       public ArrayList<Ropa> ropas = new ArrayList<Ropa>(Arrays.asList(
+            new Ropa("1","Sudadera Grimey Ubiquity Hoodie FW20 Yellow","Amarilla","XL","https://store.grimey.es/media/catalog/product/cache/1/image/1250x/040ec09b1e35df139433887a97daa66f/g/c/gch476-ylw_sudadera_grimey_ubiquity_hoodie_fw20_yellow_01.jpg"),
+            new Ropa("2","Sudadera Grimey yoga Fire Hoodie FW20 Black","Negra","S","https://store.grimey.es/media/catalog/product/cache/1/image/1250x/040ec09b1e35df139433887a97daa66f/s/u/sudadera_grimey_yoga_fire_fw20_black_01_1.jpg"),
+            new Ropa("3","Bañador Grimey Yanga Leopard SS20 Green","Verde","M","https://store.grimey.es/media/catalog/product/cache/1/image/1250x/040ec09b1e35df139433887a97daa66f/b/a/ba_ador_grimey_yanga_leopard_ss20_green_11.jpg"),
+            new Ropa("4","Pantalón Grimey Arch Rival FW20 Red","Rojo","XL","https://store.grimey.es/media/catalog/product/cache/1/image/1250x/040ec09b1e35df139433887a97daa66f/g/r/grts188-red_pantal_n_grimey_arch_rival_fw20_red_02.jpg"),
+            new Ropa("5","Chaqueta Reversible Grimey Acknowledge SS20 Silver/Black","Blanco","XXL","https://store.grimey.es/media/catalog/product/cache/1/image/1250x/040ec09b1e35df139433887a97daa66f/g/p/gpvj110_chaqueta_reversible_grimey_acknowledge_ss20_black_08_1.jpg")
+
+
+            
+
+        ));
+
+        @GetMapping("/Ropas")
+        public ArrayList<Ropa> GetAllRopa(){
+            return ropas;
+    }
+
+ 
+}
