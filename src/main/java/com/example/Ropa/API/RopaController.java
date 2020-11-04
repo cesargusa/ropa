@@ -3,9 +3,12 @@ package com.example.Ropa.API;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.websocket.server.PathParam;
+
 import com.example.Ropa.Model.Ropa;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -29,5 +32,12 @@ public class RopaController {
             return ropas;
     }
 
- 
+    @GetMapping("/Ropas/{id}")
+        public Ropa FindById(@PathVariable("id") String id){
+            for(Ropa element : ropas){
+                if(element.getId().equals(id))
+                     return element;
+            }
+            return null;
+        }
 }
