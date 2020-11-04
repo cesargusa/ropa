@@ -3,10 +3,9 @@ package com.example.Ropa.API;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javax.websocket.server.PathParam;
-
 import com.example.Ropa.Model.Ropa;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,13 +30,13 @@ public class RopaController {
 
     ));
 
-    //METHOD GET
+    // METHOD GET
     @GetMapping("/Ropas")
     public ArrayList<Ropa> GetAllRopa() {
         return ropas;
     }
 
-    //METHOD GET/{ID}
+    // METHOD GET/{ID}
     @GetMapping("/Ropas/{id}")
     public Ropa FindById(@PathVariable("id") String id) {
         for (Ropa element : ropas) {
@@ -46,30 +45,42 @@ public class RopaController {
         }
         return null;
     }
-    //METHOD POST
+
+    // METHOD POST
     @PostMapping("/Ropas")
     public Ropa Add(@RequestBody Ropa NewRopa) {
         ropas.add(NewRopa);
         return NewRopa;
     }
 
-    //METHOD PUT
+    // METHOD PUT
     @PutMapping("/Ropas/{id}")
-    public Ropa Update(@RequestBody Ropa UpdateRopa, @PathVariable("id") String id){
-        for(Ropa element : ropas){
-            if(element.getId().equals(id)){
-                   element.setId(UpdateRopa.getId());
+    public Ropa Update(@RequestBody Ropa UpdateRopa, @PathVariable("id") String id) {
+        for (Ropa element : ropas) {
+            if (element.getId().equals(id)) {
+                element.setId(UpdateRopa.getId());
                 element.setName(UpdateRopa.getName());
                 element.setColor(UpdateRopa.getColor());
                 element.setSize(UpdateRopa.getSize());
                 element.setImage(UpdateRopa.getImage());
                 return element;
             }
-             
-            
+
         }
         return null;
 
+    }
+
+    // METHOD DELETE
+    @DeleteMapping("Ropas/{id}")
+    public void Delete(@PathVariable("id") String id) {
+        for (Ropa element : ropas) {
+            if (element.getId().equals(id)) {
+                ropas.remove(element);
+                break;
+            }
+
+        }
     }
 
 }
