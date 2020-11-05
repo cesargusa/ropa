@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Mirmiseo | Tienda de Ropa Online</title>
+</head>
+
+<body>
+    <div id="hola" class="card-deck">
+  
+        </div>
+       
+</body>
+<script>
+    window.onload = function () {
+        let dire = "http://localhost:9090/Ropas";
+
+        fetch(dire)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(item => {
+                    document.getElementById('hola').innerHTML += `
+                    <div class="card">
+          <img src="${item.image}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${item.name} title</h5>
+            <p class="card-text">${item.precio} €</p>
+            
+          </div>
+        
+                   `
+
+                })
+            })
+    };
+</script>
+<style>
+    .card-body{
+        height: 300%;
+    }
+    .card{
+        font-family: 'Montserrat', sans-serif;
+
+    }
+    .card h5{
+        font-size: 90%;
+    }
+    .card p{
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    ul{
+        list-style: none;
+      
+    }
+
+    img {
+        width: 200%;
+        height: 80%;
+        align-items: center;
+    }
+ 
+
+.row p {
+    color:grey;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+.row{
+    margin-left: 0px;
+}
+.container{
+    margin-left: 0px;
+}
+.col-sm-4{
+    padding: 8%;
+    border: 2px solid red;
+    padding-bottom: 31px;
+}
+</style>
+
+</html>
