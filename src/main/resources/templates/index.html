@@ -1,87 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Mirmiseo | Tienda de Ropa Online</title>
-</head>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@500&display=swap" rel="stylesheet">
 
+    <title>Document</title>
+</head>
 <body>
-    <div id="hola" class="card-deck">
-  
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container">
+        <a class="navbar-brand" href="#"><img src="https://store.grimey.es/skin/frontend/ultimo/grimey/images/tienda-online-grimey.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <ion-icon name="menu-outline"></ion-icon>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Camisetas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Sudaderas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pantalones</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Outlet</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contacto</a>
+              </li>
+      
+          </ul>
         </div>
-       
+        </div>
+      </nav>
+
+      <section id="hero">
+        <a href="www.hoteloropesa.tk"></a>
+        <div class="container">
+           
+            <h1>LA MEJOR ROPA URBANA SE ENCUENTRA EN MIRMISEO SHOP</h1>
+
+        </div>
+      </section>
+      <section id="text">
+         <div class="container">
+            <h1>ULTIMOS PRODUCTOS</h1>
+
+         </div> 
+      </section>
+      <section >
+        <div class="container">
+            <div class="row">
+            <div id='products' class="card-group">
+<a href="productos.html"></a>
+            </div>
+        </div>
+        </div> 
+     </section>
 </body>
 <script>
-    window.onload = function () {
-        let dire = "http://localhost:9090/Ropas";
 
-        fetch(dire)
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(item => {
-                    document.getElementById('hola').innerHTML += `
-                    <div class="card">
-          <img src="${item.image}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">${item.name} title</h5>
-            <p class="card-text">${item.precio} €</p>
+    window.onload = function () {  
+    let dire= "http://localhost:9090/Ropas";
+
+    fetch(dire)
+    .then(respose => respose.json())
+    .then(data => {
+        data.forEach(item => {
+            document.getElementById('products').innerHTML += `
+           
+  <div style="border: 0.4px solid grey; padding-top: 5%; padding-left: 7%; padding-right: 7%;margin-left:1%;margin-bottom:1.5%;"class="col-sm-1 col-md-5">
+    <img class="card-img-top" src="${item.image}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">${item.name}</h5>
+      <p class="card-text"> ${item.precio}€</p>
+      <p class="card-text"><a href="http://localhost:9090/Products?id=${item.id}"><button>COMPRAR</button></p></a>
+
+    </div>
+  </div>
+
             
-          </div>
-        
-                   `
-
-                })
-            })
-    };
+            `
+                
+            
+        });
+    });
+}
 </script>
 <style>
-    .card-body{
-        height: 300%;
+    #products{
+        margin-top: 2%;
+        margin-bottom: 2%;
     }
-    .card{
-        font-family: 'Montserrat', sans-serif;
-
-    }
-    .card h5{
-        font-size: 90%;
-    }
-    .card p{
+    #products h1{
         text-align: center;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    ul{
-        list-style: none;
-      
-    }
 
-    img {
-        width: 200%;
-        height: 80%;
-        align-items: center;
     }
- 
+    #products p{
+        font-weight: bolder;
+    }
+    #products button{
+        background-color: orange;
+        text-align: center;
+    }
+    #products button:hover{
+        background-color: black;
+        color: white;
+        text-align: center;
+    }
+    #products img{
+        max-width: 150%;
+        min-width: 100%;
+   
+    }
+    #products img:hover{
+        transform: scale(1.1);
+    }
+    #text{
+        background-color: black;
+        padding: 3%;
+    }
+    #text h1{
+        color: white;
+        text-align: center;
+    }
+    #hero h1{
+        text-align: center;
+        margin-top: 20%;
+    }
+    .navbar{
+        background-color: black;
+        box-shadow: 0 2px 4px 0 rgba(0,0,.05);
+        min-height: 100px;
+    }
+    .nav-link{
+        color:white;
 
-.row p {
-    color:grey;
-    font-size: 12px;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-}
-.row{
-    margin-left: 0px;
-}
-.container{
-    margin-left: 0px;
-}
-.col-sm-4{
-    padding: 8%;
-    border: 2px solid red;
-    padding-bottom: 31px;
-}
+    }
+    .nav-link:hover{
+        color:gray;
+    }
+    .navbar button{
+        color: white;
+    }
+    body{
+        font-family: 'Turret Road', cursive;
+
+    }
+    #hero{
+        background-image: url("https://store.grimey.es/media/wysiwyg/BANNER-FW20-OK.jpg");
+        
+        background-size: cover;
+        padding-top: 90px;
+        min-height: 700px;
+        color: white;
+    }
 </style>
-
 </html>
