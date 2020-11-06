@@ -6,15 +6,17 @@ public class Ropa {
     private String color;
     private String size;
     private String image;
+    private String precio;
 
     public Ropa(){}
 
-    public Ropa(String id, String name, String color, String size, String image) {
+    public Ropa(String id, String name, String color, String size, String image,String precio) {
         this.id = id;
         this.name = name;
         this.color = color;
         this.size = size;
         this.image = image;
+        this.precio = precio;
     };
 
     public String getId() {
@@ -55,6 +57,14 @@ public class Ropa {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
     }
 
 }
